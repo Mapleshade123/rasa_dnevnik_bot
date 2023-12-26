@@ -1,0 +1,73 @@
+version: '3.1'
+intents:
+  - add_points
+  - remove_points
+  - bot_challenge
+  - goodbye
+  - greet
+  - set_game_name
+  - set_names
+  - add_unknown_player
+  - okay
+  - show_score
+
+actions:
+  - utter_greet
+  - action_set_names
+  - utter_set_game_name
+  - action_add_points
+  - action_remove_points
+  - action_add_unknown_player
+  - action_show_score
+
+entities:
+  - USER
+  - PERSON
+  - POINTS
+  - GAME_TITLE
+
+slots:
+  USER:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: USER
+  CURRENT_SCORE:
+    type: any
+    mappings:
+      - type: custom
+  NAMES_LIST:
+    type: list
+    mappings:
+      - type: from_entity
+        entity: PERSON
+  NAME:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: PERSON
+  POINTS:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: POINTS
+
+responses:
+  utter_greet:
+    - text: Привет! Я - бот, который поможет контролировать твой финансовый поток. Как к тебе обращаться?
+  utter_setup_completed:
+    - text: Готово, теперь можно добавлять или отнимать рубли. Сейчас все по нулям!
+  utter_set_game_name:
+    - text: 'Буду знать, {USER}. Введи категории расходов и доходов, их можно потом добавлять'
+  utter_goodbye:
+    - text: Пока
+  utter_iamabot:
+    - text: Я бот, написанный на Rasa.
+  utter_okay:
+    - text: Хорошо, продолжаем!
+  utter_nlu_fallback:
+    - text: "К сожалению, я не понял. Вот примеры команд, которые я знаю:\nДобавь 5 баллов Вике\n-5 Ольге"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

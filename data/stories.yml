@@ -1,0 +1,19 @@
+version: "3.1"
+
+stories:
+
+  - story: Init game
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: set_game_name
+      - slot_was_set:
+        - USER
+      - action: utter_set_game_name
+      - intent: set_names
+      - action: action_set_names
+      - slot_was_set:
+        - NAMES_LIST
+      - action: utter_setup_completed
+      - intent: show_score
+      - action: action_show_score

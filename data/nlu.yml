@@ -1,0 +1,76 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - привет
+      - приветик
+      - здравствуй
+      - здравствуйте
+      - доброе утро
+      - добрый день
+      - добрый вечер
+      - начнём
+      - начало
+      - начинай
+      - ты кто
+      - что делать
+      - как начать
+  - intent: set_names
+    examples: |
+      - [продукты](PERSON), [развлечения](PERSON), [еда](PERSON)
+      - [путешествия](PERSON) [игры](PERSON) [отдых](PERSON), ремонт(PERSON)
+      - расходы: [путешествия](PERSON), [игры](PERSON),[отдых](PERSON)
+      - траты: [спорт](PERSON), [косметика](PERSON), [проезд](PERSON)
+  - intent: set_game_name
+    examples: |
+      - [Игорь](USER)
+      - [Артем](USER)
+      - [Алина](USER)
+      - [Рита](USER)
+      - [Даша](USER)
+      - [Дима](USER)
+  - intent: add_points
+    examples: |
+      - добавь [500](POINTS) [продукты](PERSON)
+      - [60](POINTS) баллов [проезд](PERSON)
+      - плюс [1000](POINTS) [развлечения](PERSON)
+      - [продукты](PERSON) [56](POINTS)
+      - [6700](POINTS) [ремонт](PERSON)
+      - [600](POINTS) [еда](PERSON)
+      - [-60](POINTS) рублей [еда](PERSON)
+      - [-60](POINTS) [игры](PERSON)
+      - минус [1000](POINTS) [еда](PERSON)
+      - [рестораны](PERSON) [-5600](POINTS)
+      - [-600](POINTS) [озон](PERSON)
+  - intent: remove_points
+    examples: |
+      - отними [5](POINTS) рублей у [продукты](PERSON)
+      - вычти [5](POINTS) у [развлечения](PERSON)
+      - убавь [5](POINTS) у [спорт](PERSON)
+      - сними [5](POINTS) [проезд](PERSON)
+      - убери [5](POINTS) рублей [продукты](PERSON)
+  - intent: show_score
+    examples: |
+      - траты
+      - расходы
+      - счет
+      - траты
+      - покажи
+      - дневник трат
+  - intent: goodbye
+    examples: |
+      - пока
+      - досвидания
+      - пока-пока
+      - хорошего дня
+      - увидимся позже
+  - intent: bot_challenge
+    examples: |
+      - ты бот?
+      - ты человек?
+      - я говорю с ботом?
+      - я говорю с человеком?
+  - regex: POINTS
+    examples: |
+      - [0-9]+

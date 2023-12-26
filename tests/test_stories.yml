@@ -1,0 +1,79 @@
+stories:
+  - story: happy path
+    steps:
+      - intent: greet
+        user: |-
+          привет
+      - action: utter_greet
+      - action: form_game_info
+      - active_loop: form_game_info
+
+      - intent: set_names
+        user: |-
+          [продукты](PERSON), [проезд](PERSON), [развлечения](PERSON)
+
+      - slot_was_set:
+          - NAMES_LIST:
+              - продукты
+              - проезд
+              - развлечения
+      - slot_was_set:
+          - CURRENT_SCORE:
+              продукты: 0
+              проезд: 0
+              развлечения: 0
+
+      - action: form_game_info
+      - intent: set_game_name
+        user: |-
+          [Игорь](USER)
+      - slot_was_set:
+          - GAME_TITLE: манчкин
+      - action: form_game_info
+      - active_loop: null
+      - action: utter_setup_completed
+
+      - intent: add_points
+        user: |-
+          добавь [67](POINTS) [проезд](PERSON)
+      - action: action_add_points
+      - slot_was_set:
+          - CURRENT_SCORE:
+              продукты: 0
+              проезд: 67
+              развлечения: 0
+
+      - intent: add_points
+        user: |-
+          [70](POINTS) рублей [продукты](PERSON)
+      - action: action_add_points
+      - slot_was_set:
+          - CURRENT_SCORE:
+              продукты: 70
+              проезд: 67
+              развлечения: 0
+
+      - intent: remove_points
+        user: |-
+          вычти [9](POINTS) у [ксении](PERSON)
+      - action: action_remove_points
+      - slot_was_set:
+          - CURRENT_SCORE:
+              Анна: 7
+              Ксения: 58
+              Ален: 0
+
+      - intent: remove_points
+        user: |-
+          минус [1](POINTS) [анна](PERSON)
+      - action: action_remove_points
+      - slot_was_set:
+          - CURRENT_SCORE:
+              Анна: 6
+              Ксения: 58
+              Ален: 0
+
+      - intent: show_score
+        user: |-
+          - счет
+      - action: action_show_score

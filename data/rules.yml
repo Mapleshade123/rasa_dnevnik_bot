@@ -1,0 +1,43 @@
+version: "3.1"
+
+rules:
+
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Say 'I am a bot' anytime the user challenges
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: Add points
+    steps:
+      - intent: add_points
+      - action: action_add_points
+
+  - rule: Remove points
+    steps:
+      - intent: remove_points
+      - action: action_remove_points
+
+  - rule: Show score
+    steps:
+      - intent: show_score
+      - action: action_show_score
+
+  - rule: Add unknown player
+    steps:
+      - intent: add_unknown_player
+      - action: action_add_unknown_player
+
+  - rule: Say okay
+    steps:
+      - intent: okay
+      - action: utter_okay
+
+  - rule: Handle out-of-scope intent
+    steps:
+      - intent: nlu_fallback
+      - action: utter_nlu_fallback
