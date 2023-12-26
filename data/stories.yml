@@ -2,14 +2,14 @@ version: "3.1"
 
 stories:
 
-  - story: Init game
+  - story: Init diary
     steps:
       - intent: greet
       - action: utter_greet
-      - intent: set_game_name
+      - intent: set_user_name
       - slot_was_set:
         - USER
-      - action: utter_set_game_name
+      - action: utter_set_user_name
       - intent: set_names
       - action: action_set_names
       - slot_was_set:

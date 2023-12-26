@@ -5,7 +5,7 @@ intents:
   - bot_challenge
   - goodbye
   - greet
-  - set_game_name
+  - set_user_name
   - set_names
   - add_unknown_player
   - okay
@@ -14,7 +14,7 @@ intents:
 actions:
   - utter_greet
   - action_set_names
-  - utter_set_game_name
+  - utter_set_user_name
   - action_add_points
   - action_remove_points
   - action_add_unknown_player
@@ -22,7 +22,7 @@ actions:
 
 entities:
   - USER
-  - PERSON
+  - CATEGORY
   - POINTS
   - GAME_TITLE
 
@@ -40,12 +40,12 @@ slots:
     type: list
     mappings:
       - type: from_entity
-        entity: PERSON
+        entity: CATEGORY
   NAME:
     type: text
     mappings:
       - type: from_entity
-        entity: PERSON
+        entity: CATEGORY
   POINTS:
     type: text
     mappings:
@@ -57,7 +57,7 @@ responses:
     - text: Привет! Я - бот, который поможет контролировать твой финансовый поток. Как к тебе обращаться?
   utter_setup_completed:
     - text: Готово, теперь можно добавлять или отнимать рубли. Сейчас все по нулям!
-  utter_set_game_name:
+  utter_set_user_name:
     - text: 'Буду знать, {USER}. Введи категории расходов и доходов, их можно потом добавлять'
   utter_goodbye:
     - text: Пока
@@ -66,7 +66,7 @@ responses:
   utter_okay:
     - text: Хорошо, продолжаем!
   utter_nlu_fallback:
-    - text: "К сожалению, я не понял. Вот примеры команд, которые я знаю:\nДобавь 5 баллов Вике\n-5 Ольге"
+    - text: "К сожалению, я не понял. Вот примеры команд, которые я знаю:\nДобавь 500 рублей в продукты\n -1000 развлечения"
 
 session_config:
   session_expiration_time: 60
